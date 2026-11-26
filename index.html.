@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NOVÉLY — Assistant commercial</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f7fb;
+      color: #172033;
+    }
+    header {
+      background: #14213d;
+      color: white;
+      padding: 24px;
+      text-align: center;
+    }
+    main {
+      max-width: 720px;
+      margin: 32px auto;
+      padding: 24px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px #00000010;
+    }
+    h1 { margin-top: 0; }
+    label {
+      display: block;
+      margin: 18px 0 8px;
+      font-weight: bold;
+    }
+    textarea, input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #cbd2df;
+      border-radius: 8px;
+      font: inherit;
+    }
+    textarea { min-height: 100px; }
+    button {
+      margin-top: 18px;
+      padding: 13px 18px;
+      border: 0;
+      border-radius: 8px;
+      background: #2563eb;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+    }
+    #resultat {
+      margin-top: 20px;
+      padding: 16px;
+      background: #eef4ff;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NOVÉLY</h1>
+    <p>Votre assistant commercial pour trouver et convaincre des clients.</p>
+  </header>
+
+  <main>
+    <h2>Préparez votre message commercial</h2>
+    <p>Décrivez votre activité et le produit ou service que vous proposez.</p>
+
+    <label for="activite">Votre activité</label>
+    <input id="activite" placeholder="Ex. : vente de vêtements">
+
+    <label for="offre">Votre offre</label>
+    <textarea id="offre" placeholder="Décrivez ce que vous vendez et à qui."></textarea>
+
+    <button onclick="genererMessage()">Créer un exemple de message</button>
+    <div id="resultat" aria-live="polite"></div>
+  </main>
+
+  <script>
+    function genererMessage() {
+      const activite = document.getElementById("activite").value.trim();
+      const offre = document.getElementById("offre").value.trim();
+      const resultat = document.getElementById("resultat");
+
+      if (!activite || !offre) {
+        resultat.textContent = "Veuillez remplir votre activité et votre offre.";
+        return;
+      }
+
+      resultat.textContent =
+        "Bonjour ! Je vous contacte au sujet de " + activite +
+        ". " + offre +
+        "\n\nSouhaitez-vous en savoir plus ? Je serai ravi(e) de répondre à vos questions.";
+    }
+  </script>
+</body>
+</html>
